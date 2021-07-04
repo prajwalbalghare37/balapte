@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+{% block title %}मुख्य{% endblock title %}
+{% block css %}
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+{% endblock css %}
+{% block mukhyaActive %}active{% endblock mukhyaActive %}
+{% block body %}
+<div class="container my-5" style="margin-top: 4rem">
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="static\img\slider1.jpg" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="static\img\slider2.jpg" class="d-block w-100" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="static\img\slider3.jpg" class="d-block w-100" alt="..." />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+<div class="container">
+  <div class="row mb-2">
+  {% for post in allPosts %}
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{post.author}}</strong>
+          <h3 class="mb-0"><strong>{{post.title}}</strong></h3>
+          <div class="mb-1 text-muted">{{post.timeStamp}}</div>
+          <div class="card-text mb-auto my-3 previews">{{post.content | safe | truncatewords:40}}</div>
+          <a href="/blog/{{post.slug}}" class="stretched-link my-3">पुढे वाचा...</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="container mt-4">
+  <section class="min-vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div
+          class="col col-lg-9 col-xl-7 mb-2 mb-4"
+          style="border-radius: 15px"
+        >
+          <div class="card" style="border-radius: 15px">
+            <div
+              class="card-body p-5"
+              style="background-color: #eee"
+              style="border-radius: 15px"
+            >
+              <div class="text-center mb-4 pb-2">
+                <img style="margin: auto;" src="static\img\double-quotes.png" alt="Bulb" width="70" />
+              </div>
+
+              <figure class="text-center mb-0">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic">
+                      श्री. बाळ आपटे असे एक प्रख्यात संसदपटू आणि राजकीय नेते
+                      होते ज्यांना लोककल्याणाची निरंतर जाणिव होती आणि त्याकरिता
+                      ते विविध मंचावर अथकपणे कार्यरत राहिले. ते विख्यात वकील आणि
+                      नावाजलेले शिक्षणतज्जही होते.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  एम. हमीद अन्सारी | भारताचे उपराष्ट्रपती
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+          <div class="card" style="border-radius: 15px">
+            <div
+              class="card-body p-5"
+              style="background-color: #eee"
+              style="border-radius: 15px"
+            >
+              <div class="text-center mb-4 pb-2">
+                <img style="margin: auto;" src="static\img\double-quotes.png" alt="Bulb" width="70" />
+              </div>
+
+              <figure class="text-center mb-0">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic">
+                      बाळासाहेब, याच नावाने ते वकीलवर्गात ओळखले जात. साधेपणा,
+                      विन्रमता आणि वास्तवाचे नित्य भान ही त्यांची वैशिष्टे होती.
+                      ते स्वत: वरिष्ठ वकील असले तरी काही वरिष्ठांकडे असणारा
+                      उद्दामपणाचा त्यांना स्पर्शही नव्हता. ते सर्वांशीच विशेषत:
+                      ज्युनइर वकिलांशी आदराने वागत. त्यांच्या अशा चंगुलपणाचा मी
+                      प्रशंसक होतो. आपल्या सर्वांनाच बाळासाहेबंकडून व्यावसायिक
+                      वृत्ती संदर्भात शिकण्यसारखे आहे.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  एस. एच. कपाडिया | भारताचे माजी मुख्य न्यायमूर्ती
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+          <div class="card" style="border-radius: 15px">
+            <div
+              class="card-body p-5"
+              style="background-color: #eee"
+              style="border-radius: 15px"
+            >
+              <div class="text-center mb-4 pb-2">
+                <img style="margin: auto;" src="static\img\double-quotes.png" alt="Bulb" width="70" />
+              </div>
+
+              <figure class="text-center mb-0">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic">
+                      बाळासाहेब आपटे हे आदर्श गुरू होते. "अभाविप'च्या काळापासून
+                      आम्हाला त्यांचे मार्गदर्शन लाभले. ते मोजकेच, पण अर्थपूर्ण
+                      बोलत. एक कुशल संघटक व उत्कृष्ट रणनीतीकार म्हणूनही
+                      बाळासाहेबांची ओळख होती.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  प्रकाश जावडेकर | राष्ट्रीय प्रवक्ते, भाजप
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+          <div class="card" style="border-radius: 15px">
+            <div class="card-body p-5" style="background-color: #eee">
+              <div class="text-center mb-4 pb-2">
+                <img style="margin: auto;"  src="static\img\double-quotes.png" alt="Bulb" width="70" />
+              </div>
+
+              <figure class="text-center mb-0">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic">
+                      अभाविप'मधील पिढीचा मी एक प्रतिनिधी असल्याने
+                      बाळासाहेबांच्या जाण्याने जाणवणारे पोरकेपण मी अनुभवतो आहे.
+                      ते केवळ व्यक्तीचे नाव नव्हते, तर स्वतःच एक संस्था होते.
+                      राजकीय क्षेत्रातील सामाजिक व्यक्तिमत्त्व म्हणून बाळासाहेब
+                      कायम स्मरणात राहतील.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  श्‍याम जाजू | राष्ट्रीय सचिव, भाजप
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+          <div class="card" style="border-radius: 15px">
+            <div
+              class="card-body p-5"
+              style="background-color: #eee"
+              style="border-radius: 15px"
+            >
+              <div class="text-center mb-4 pb-2">
+                <img style="margin: auto;"  src="static\img\double-quotes.png" alt="Bulb" width="70" />
+              </div>
+
+              <figure class="text-center mb-0">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic">
+                      बाळासाहेब आपटे आपल्यासाठी मित्र, तत्त्वज्ञ व मार्गदर्शक या
+                      तिन्ही भूमिकांतून सदैव प्रेरणादायी राहिले. त्यांच्या
+                      निधनाने पक्षाचे व आपले व्यक्तिगत मोठे नुकसान झाले
+                      आहे.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  नितीन गडकरी | राष्ट्रीय अध्यक्ष, भाजप
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+          <div class="card" style="border-radius: 15px">
+            <div
+              class="card-body p-5"
+              style="background-color: #eee"
+              style="border-radius: 15px"
+            >
+              <div class="text-center mb-4 pb-2">
+                <img  style="margin: auto;" src="static\img\double-quotes.png" alt="Bulb" width="70" />
+              </div>
+
+              <figure class="text-center mb-0">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic">
+                      आपटे यांच्या निधनाने भाजपच्या मूळ विचारधारेशी समर्पित
+                      असलेल्या एका कर्मठ कार्यकर्त्याला आपण मुकलो आहोत. देशाच्या
+                      राजकारणात भाजपची ही भव्य इमारत उभी राहिली आहे, त्या
+                      इमारतीचा पाया भक्कम करणाऱ्यांत आपटे यांच्यासारख्या समर्पित
+                      कार्यकर्त्यांचा मोठा वाटा असल्याचे आपण विसरू शकत नाही, असे
+                      सांगून अडवानी म्हणाले, की देशाच्या राजकीय प्रवाहात भाजपला
+                      आज जे स्थान प्राप्त झाले आहे, त्यामागे आपटे यांच्यासारख्या
+                      सच्च्या कार्यकर्त्यांचा प्रचंड मोठा सहभाग व समर्पण आहे.
+                      संसदेत व संसदेबाहेरही त्यांच्या प्रत्येक शब्दांत पक्ष व
+                      संघटनेप्रति असलेल्या सच्च्या निष्ठेचे दर्शन घडत असे.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  लालकृष्ण अडवानी | भाजपचे वरिष्ठ नेते
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+          <div class="card" style="border-radius: 15px">
+            <div
+              class="card-body p-5"
+              style="background-color: #eee"
+              style="border-radius: 15px"
+            >
+              <div class="text-center mb-4 pb-2">
+                <img style="margin: auto;"  src="static\img\double-quotes.png" alt="Bulb" width="70" />
+              </div>
+
+              <figure class="text-center mb-0">
+                <blockquote class="blockquote">
+                  <p class="pb-3">
+                    <span class="lead font-italic">
+                      प्रा.बाळ आपटे एक संयमी आणि विद्वान खासदार म्हणून प्रसिध्द
+                      होते. विचारवंत म्हणून ओळख असलेल्या प्रा.आपटे यांनी
+                      राज्यसभेत अनेक महत्वाच्या प्रश्नांवर अभ्यासपूर्ण विचार
+                      मांडले. नामांकित विधीज्ञ म्हणूनही त्यांची कारकिर्द गाजली.
+                      विद्यार्थ्यांच्या प्रश्नांवर त्यांनी सातत्याने आवाज उठवून
+                      विद्यार्थ्यांचे संघटन करण्यात महत्वाची भूमिका बजावली.
+                      मुंबई विद्यापीठात कायद्याचे प्राध्यापक म्हणून त्यांनी
+                      केलेली कामगिरीही लक्षणीय होती. त्यांच्या निधनाने एक अनुभवी
+                      राजकीय नेता आणि चांगला लोकप्रतिनिधी आपण गमावला आहे.</span
+                    >
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0">
+                  पृथ्वीराज चव्हाण | माजी मुख्यमंत्री
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock body %}
+{% block js %}
+<script>
+    let previews = document.getElementsByClassName('previews');
+    Array.from(previews).forEach((element) => {
+        element.innerHTML = element.innerText
+    });
+</script>
+{% endblock js %}

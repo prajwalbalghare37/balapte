@@ -1,0 +1,100 @@
+{% extends 'base.html' %} 
+{% block title %}{% endblock title %}
+{% block css %}
+<style>
+  .userlogoimg{
+      max-width: 70%;
+      height: 10vh;
+    } 
+  @media (max-width:900px) {
+    .userlogoimg{
+      max-width: 16%;
+      height: 6vh;
+    } 
+  }
+  @media (max-width:400px) {
+    .userlogoimg{
+      max-width: 12%;
+      height: 4vh;
+    } 
+  }
+</style>
+{% endblock css %} 
+{% block blogActive %}active{% endblock blogActive %} 
+{% block body %}
+{% load humanize %}
+<div class="container mt-5 px-4 px-lg-5 d-flex p-2 flex-column justify-content-start">
+  <article style="text-align:start;" class="blog-post d-flex flex-column  justify-content-start">
+    <h3 class="mb-0">
+      <h2 class="blog-post-title text-dark text-decoration-none">{{post.title}}</h2>    
+    </h3>
+    <div class="mb-1 text-muted my-2">{{post.author}} - {{post.timeStamp}}</div>
+    
+    <hr />
+
+    <section class="text-gray-600 body-font">
+      <div
+        class="
+          container
+          display:
+          flex;
+          flex-direction:
+          column;
+          flex-wrap:
+          nowrap;
+          align-content:
+          flex-start;
+          justify-content:
+          flex-start;
+          align-items:
+          flex-start;
+        ">
+        <img
+          class="my-4 mb-5 d-block"
+          alt="hero"
+          src="{{post.image.url}}"
+          style="max-width:60vw;max-height: 50vh;margin: auto;"
+        />
+        <div class="d-flex flex-column mb-5">
+          <div class="mb-5">
+            {{post.content | safe}}
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="container">
+        <h2>Comments ({{comments.count}}) </h2>
+      {% if user.is_authenticated %}
+        <form action="/blog/postcomment" method="POST">
+        {% csrf_token %}
+          <div class="mb-3">
+            <input name="comment" type="text" class="form-control" id="comment">
+          </div>
+          <div class="mb-3">
+            <input name="postSno" type="hidden" class="form-control" id="postSno" value="{{post.sno}}">
+          </div>
+          <button type="submit" class="btn btn-outline-dark">Comment</button>
+        </form>
+      {% else %}
+        <h1>please login to post a comment</h1>
+      {% endif %}
+        <ul class="list-group list-group-flush border my-3">
+        {% for comment in comments %}
+          <li class="list-group-item">
+            <div class="img my-3" style="max-height:10vh;border-radius:50%;">
+              <img class="userlogoimg" style="border-radius:50%;" src="\media\allImages\user_logo.png" alt="">
+              <span class="" style="padding: 6px;"> <strong>{{comment.user.username}}</strong> - <span class="badge bg-dark">{{comment.timeStamp | naturaltime}}</span></span>
+            </div>
+            <div class="content" style="padding-left: 4.5rem;">
+              {{comment.comment}}
+            </div>
+           </li>
+        {% endfor %}
+        </ul>
+      
+      </div>
+    </section>
+  </article>
+</div>
+
+{% endblock body %}

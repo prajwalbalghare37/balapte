@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+{% block title %}छायाचित्रे{% endblock title %} 
+{% block galleryActive %}active{% endblock galleryActive %} 
+{% block body %}
+
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1
+        class="
+          sm:text-3xl
+          text-2xl
+          font-medium
+          title-font
+          mb-5
+          mt-5
+          text-gray-900
+        "
+      >
+        बाळासाहेब आपटे - छायाचित्रे
+      </h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
+    </div>
+    <div class="wrapper">
+      <div
+        class="img-area"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        {% for img in images %}
+        <div class="single-img" style="padding: 0 20px 20px; cursor: pointer">
+          <a target="_blank" href="{{img.image.url}}"
+            ><img style="max-width: 90vw" src="{{img.image.url}}" alt=""
+          /></a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}
