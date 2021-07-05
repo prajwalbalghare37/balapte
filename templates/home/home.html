@@ -2,6 +2,7 @@
 {% block title %}मुख्य{% endblock title %}
 {% block css %}
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 {% endblock css %}
 {% block mukhyaActive %}active{% endblock mukhyaActive %}
 {% block body %}
@@ -67,7 +68,7 @@
 <div class="container">
   <div class="row mb-2">
   {% for post in allPosts %}
-    <div class="col-md-6">
+    <div class="col-md-6" data-aos="fade-up">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">{{post.author}}</strong>
@@ -91,7 +92,7 @@
           class="col col-lg-9 col-xl-7 mb-2 mb-4"
           style="border-radius: 15px"
         >
-          <div class="card" style="border-radius: 15px">
+          <div class="card" style="border-radius: 15px" data-aos="zoom-in">
             <div
               class="card-body p-5"
               style="background-color: #eee"
@@ -119,7 +120,7 @@
             </div>
           </div>
         </div>
-        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px" data-aos="zoom-in">
           <div class="card" style="border-radius: 15px">
             <div
               class="card-body p-5"
@@ -151,7 +152,7 @@
             </div>
           </div>
         </div>
-        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px" data-aos="zoom-in">
           <div class="card" style="border-radius: 15px">
             <div
               class="card-body p-5"
@@ -180,7 +181,7 @@
             </div>
           </div>
         </div>
-        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px" data-aos="zoom-in">
           <div class="card" style="border-radius: 15px">
             <div class="card-body p-5" style="background-color: #eee">
               <div class="text-center mb-4 pb-2">
@@ -206,7 +207,7 @@
             </div>
           </div>
         </div>
-        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px" data-aos="zoom-in">
           <div class="card" style="border-radius: 15px">
             <div
               class="card-body p-5"
@@ -235,7 +236,7 @@
             </div>
           </div>
         </div>
-        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px" data-aos="zoom-in">
           <div class="card" style="border-radius: 15px">
             <div
               class="card-body p-5"
@@ -270,7 +271,7 @@
             </div>
           </div>
         </div>
-        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px">
+        <div class="col col-lg-9 col-xl-7 mb-4" style="border-radius: 15px" data-aos="zoom-in">
           <div class="card" style="border-radius: 15px">
             <div
               class="card-body p-5"
@@ -311,6 +312,10 @@
 
 {% endblock body %}
 {% block js %}
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 <script>
     let previews = document.getElementsByClassName('previews');
     Array.from(previews).forEach((element) => {
